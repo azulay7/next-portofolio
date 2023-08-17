@@ -9,9 +9,26 @@ import {
   AiFillLinkedin,
   AiFillGithub,
 } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 export default function Home() {
+  
   const [darkMode, setDarkMode] = useState(false);
+
+  useLayoutEffect(()=>{
+    const darkMode:string| null = localStorage.getItem('darkMode');
+    if(darkMode){
+      setDarkMode(darkMode=='true');
+    }
+  },[])
+  // useEffect(()=>{
+  //   localStorage['darkMode'] = darkMode;
+  // },[darkMode])
+
+  const toggleDarkMode = ()=>{
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', ''+newDarkMode);
+  }
   return (
     <div className={darkMode? "dark":""}>
       <Head>
@@ -24,7 +41,7 @@ export default function Home() {
           <nav className="py-10 mb-12 flex justify-between ">
             <h1 className="text-xl font-burtons">developedby</h1>
             <ul className="flex items-center">
-              <li onClick={() => setDarkMode(!darkMode)}>
+              <li onClick={toggleDarkMode}>
                 <BsFillMoonStarsFill className="cursor-pointer" />
               </li>
               <li>
