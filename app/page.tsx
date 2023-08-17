@@ -20,15 +20,13 @@ export default function Home() {
       setDarkMode(darkMode=='true');
     }
   },[])
-  // useEffect(()=>{
-  //   localStorage['darkMode'] = darkMode;
-  // },[darkMode])
 
   const toggleDarkMode = ()=>{
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
     localStorage.setItem('darkMode', ''+newDarkMode);
   }
+  
   return (
     <div className={darkMode? "dark":""}>
       <Head>
@@ -79,6 +77,12 @@ export default function Home() {
             <p className="text-md py-5 leading-8 text-gray-800 dark:text-white">
             Started 10 years ago with .NET applications, including ASP.NET, WinForms, and WPF. I have also developed native applications for both Android and Xamarin. When Angular 2 was released, I came across an opportunity to develop a new advanced product, sparking my interest in Single Page Applications (SPAs) and advanced techniques. During that time, my curiosity expanded to different platforms like React, Vue.js, and Svelte. This journey across these platforms has kept my curiosity alive and extended my range of abilities.
             </p>
+          </div>
+        </section>
+
+        <section id="my-stack">
+          <d  iv>
+
           </div>
         </section>
       </main>
